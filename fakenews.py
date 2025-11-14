@@ -3,27 +3,15 @@ import pandas as pd
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras.preprocessing.text import Tokenizer
-from tensorflow.keras.preprocessing.sequence import pad_sequences
 import nltk
 from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
 import re
-import matplotlib.pyplot as plt
-import seaborn as sns
-from wordcloud import WordCloud
 import gensim
 from gensim.utils import simple_preprocess
 
 # Download NLTK data
-try:
-    nltk.data.find('tokenizers/punkt')
-except LookupError:
-    nltk.download('punkt')
-
-try:
-    nltk.data.find('corpora/stopwords')
-except LookupError:
-    nltk.download('stopwords')
+nltk.download('punkt', quiet=True)
+nltk.download('stopwords', quiet=True)
 
 # Set page config
 st.set_page_config(
@@ -202,27 +190,8 @@ def main():
     detector = FakeNewsDetector()
     
     # Sidebar
-    st.sidebar.title("About")
-    st.sidebar.info(
-        "This AI-powered tool analyzes news content to detect potential fake news."
-    )
-    
-    st.sidebar.title("How It Works")
-    st.sidebar.markdown("""
-    1. Enter news headline and content  
-    2. AI analyzes language patterns  
-    3. Get authenticity assessment  
-    4. Review confidence score  
-    """)
-    
-    st.sidebar.title("Tips for Spotting Fake News")
-    st.sidebar.markdown("""
-    - Check the source credibility  
-    - Look for supporting evidence  
-    - Verify with multiple sources  
-    - Be wary of emotional language  
-    - Check publication dates  
-    """)
+
+ 
 
     col1, col2 = st.columns([1, 1])
     
